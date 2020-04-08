@@ -15,7 +15,6 @@ clear all
 
 % Set parameters
 % ----------------------------------------------------------------------- %
-
 % Set seed
 seed = 1;
 rng(seed)
@@ -32,8 +31,13 @@ env_param.naction = 2;
 env_param.rewards = [-1, 1];
 env_param.ntrialperstate = 50;
 env_param.ntrial = env_param.ntrialperstate * env_param.nstate;
+
+% option 1 probability of winning points
 env_param.p{1} = fliplr(linspace(.6, .9, env_param.nstate));
+
+% option 2 probability of winning points
 env_param.p{2} = 1 - env_param.p{1};
+
 env_param.ev{1} = 1*env_param.p{1} + -1*(1-env_param.p{1});
 env_param.ev{2} = 1*env_param.p{2} + -1*(1-env_param.p{2});
 env_param.con = repelem(1:env_param.nstate, env_param.ntrialperstate);
